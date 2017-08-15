@@ -34,7 +34,10 @@ $(function populateSelects() {
     })
 
     // insert data into next sibling of HEader name
-
+    $(`#${myType}-list`).append(`<div class="itinerary-item">
+                <span class="title">${place[0].name}</span>
+                <button class="btn btn-xs btn-danger remove btn-circle">x</button>
+              </div>`)
 
     console.log(myType, place);
 
