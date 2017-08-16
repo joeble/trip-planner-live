@@ -33,17 +33,18 @@ $(function populateSelects() {
       return hotel.id == idVal;
     })
 
+    let uniqueId = drawMarker(myType, place[0].place.location);
+
     // insert data into next sibling of HEader name
-    $(`#${myType}-list`).append(`<div class="itinerary-item"><span class="title">${place[0].name}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button></div>`)
-
-    drawMarker(myType, place[0].place.location);
-
+    $(`#${myType}-list`).append(`<div id="${uniqueId}" class="itinerary-item"><span class="title">${place[0].name}</span><button class="btn btn-xs btn-danger remove btn-circle">x</button></div>`)
   })
 
   // FUNCTIONS: STUFF GETS REMOVED!!!!!!
   $(`.list-group`).on(`click`, `.remove`, function () {
-    $(this).parent().remove();
-    // marker.setMap(null);
+    const parent = $(this).parent()
+    const markerId = parent.attr('id')
+    parent.remove()
+    markers[markerId].setMap(null)
   })
 
 })

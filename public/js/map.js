@@ -1,4 +1,5 @@
 var drawMarker;
+const markers = [];
 
 $(function initializeMap (){
 
@@ -48,6 +49,12 @@ $(function initializeMap (){
     activity: '/images/star-3.png'
   };
 
+  let currentId = 0;
+
+  function uniqueId () {
+    return currentId++;
+  }
+
   drawMarker = function (type, coords) {
     var latLng = new google.maps.LatLng(coords[0], coords[1]);
     var iconURL = iconURLs[type];
@@ -55,7 +62,10 @@ $(function initializeMap (){
       icon: iconURL,
       position: latLng
     });
+    let id = uniqueId();
+    markers[id] = marker;
     marker.setMap(currentMap);
+    return id;
   }
 
   // drawMarker('hotel', [40.705137, -74.007624]);
