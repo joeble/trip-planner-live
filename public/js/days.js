@@ -40,4 +40,10 @@ $(function populateSelects() {
 
   })
 
+  // FUNCTIONS: STUFF GETS REMOVED!!!!!!
+  $(`.list-group`).on(`click`, `.remove`, function () {
+    $(this).parent().remove();
+    // marker.setMap(null);
+  })
+
 })
